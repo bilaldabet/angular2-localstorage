@@ -1,22 +1,21 @@
 import {WebStorageUtility} from "../utility/webstorage.utiltiy";
 
 export function LocalStorage(key?: string) {
-    return WebStorage(localStorage, key);
+    return WebStorage(localStorage, key || '');
 }
 
 export function SessionStorage(key?: string) {
-    return WebStorage(sessionStorage, key);
+    return WebStorage(sessionStorage, key || '');
 }
 
 // initialization cache
-let cache = {};
+const cache: { [key: string]: boolean } = {};
 
-export let WebStorage = (webStorage: Storage, key: string) => {
-    return (target: Object, propertyName: string): void => {
+export const WebStorage = (webStorage: Storage, key: string) => {
+    return (target: object, propertyName: string): void => {
         key = key || propertyName;
 
-        let storageKey = WebStorageUtility.generateStorageKey(key);
-        let storedValue = WebStorageUtility.get(webStorage, key);
+        const storedValue = WebStorageUtility.get(webStorage, key);
 
         Object.defineProperty(target, propertyName, {
             get: function() {

@@ -23,14 +23,18 @@ export class WebStorageService {
     }
 }
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class LocalStorageService extends WebStorageService {
     constructor() {
         super(localStorage);
     }
 }
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class SessionStorageService extends WebStorageService {
     constructor() {
         super(sessionStorage);

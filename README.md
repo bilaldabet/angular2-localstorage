@@ -1,7 +1,9 @@
-# Angular2 @LocalStorage
+# Angular @LocalStorage
 
-This little Angular2/typescript decorator makes it super easy to save and restore *automatically* a variable state in your
-directive (class property) using HTML5' LocalStorage.
+This Angular/TypeScript decorator makes it super easy to save and restore *automatically* a variable state in your
+component (class property) using HTML5' LocalStorage.
+
+**Updated for Angular 15** - This library now supports Angular 15 with modern TypeScript features.
 
 ## Seeking new maintainer
 
@@ -13,13 +15,12 @@ If you are looking for an alternativ right now, look at https://github.com/zooms
 1. Download the library using npm or github: `npm install --save angular2-localstorage`
 2. Import the WebStorageModule in your app module:
     ```typescript
-    import {Component} from "angular2/core";
+    import {NgModule} from "@angular/core";
     import {WebStorageModule, LocalStorageService} from "angular2-localstorage";
 
     @NgModule({
-        import: [WebStorageModule]
-    @Component({
-        providers: [LocalStorageService]
+        imports: [WebStorageModule]
+        // Note: Services are now provided automatically via providedIn: 'root'
     })
     export class AppModule {}
     ```

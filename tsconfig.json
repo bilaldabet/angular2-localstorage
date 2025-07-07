@@ -1,14 +1,21 @@
 {
 	"compilerOptions": {
-		"target": "es5",
-		"module": "commonjs",
+		"target": "ES2020",
+		"module": "ES2020",
 		"moduleResolution": "node",
+		"lib": ["ES2020", "dom"],
 		"sourceMap": true,
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"inlineSources": true,
 		"outDir": "dist",
-		"declaration": true
+		"declaration": true,
+		"strict": true,
+		"noImplicitAny": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true
 	},
 	"exclude": [
 		"node_modules",

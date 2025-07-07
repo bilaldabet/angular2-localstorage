@@ -6,6 +6,7 @@ export * from './service/index'
 export * from './utility/index'
 
 @NgModule({
-    providers: [LocalStorageService, SessionStorageService]
+    // Services are now provided in root via providedIn: 'root'
+    providers: []
 })
 export class WebStorageModule {}

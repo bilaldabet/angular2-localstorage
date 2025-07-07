@@ -1,32 +1,31 @@
-"use strict";
-var webstorage_utiltiy_1 = require("../utility/webstorage.utiltiy");
-function LocalStorage(key) {
-    return exports.WebStorage(localStorage, key);
+import { WebStorageUtility } from "../utility/webstorage.utiltiy";
+export function LocalStorage(key) {
+    return WebStorage(localStorage, key || '');
 }
-exports.LocalStorage = LocalStorage;
-function SessionStorage(key) {
-    return exports.WebStorage(sessionStorage, key);
+export function SessionStorage(key) {
+    return WebStorage(sessionStorage, key || '');
 }
-exports.SessionStorage = SessionStorage;
-var cache = {};
-exports.WebStorage = function (webStorage, key) {
-    return function (target, propertyName) {
+// initialization cache
+const cache = {};
+export const WebStorage = (webStorage, key) => {
+    return (target, propertyName) => {
         key = key || propertyName;
-        var storageKey = webstorage_utiltiy_1.WebStorageUtility.generateStorageKey(key);
-        var storedValue = webstorage_utiltiy_1.WebStorageUtility.get(webStorage, key);
+        const storedValue = WebStorageUtility.get(webStorage, key);
         Object.defineProperty(target, propertyName, {
             get: function () {
-                return webstorage_utiltiy_1.WebStorageUtility.get(webStorage, key);
+                return WebStorageUtility.get(webStorage, key);
             },
             set: function (value) {
                 if (!cache[key]) {
+                    // first setter handle
                     if (storedValue === null) {
-                        webstorage_utiltiy_1.WebStorageUtility.set(webStorage, key, value);
+                        // if no value in localStorage, set it to initializer
+                        WebStorageUtility.set(webStorage, key, value);
                     }
                     cache[key] = true;
                     return;
                 }
-                webstorage_utiltiy_1.WebStorageUtility.set(webStorage, key, value);
+                WebStorageUtility.set(webStorage, key, value);
             },
         });
     };
