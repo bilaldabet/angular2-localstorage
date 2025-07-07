@@ -1,7 +1,7 @@
 {
-  "name": "angular2-localstorage",
-  "version": "0.4.0",
-  "description": "Angular decorator to save and restore class properties automatically from LocalStorage.",
+  "name": "angular15-localstorage",
+  "version": "1.0.0",
+  "description": "Angular 15 decorator to save and restore class properties automatically from LocalStorage. Modern fork with Angular 15+ support.",
   "scripts": {
     "lint": "eslint src/**/*.ts",
     "build": "rimraf dist && tsc",
@@ -9,19 +9,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:marcj/angular2-localstorage.git"
+    "url": "git@github.com:bilaldabet/angular15-localstorage.git"
   },
   "keywords": [
     "Angular",
     "Angular15",
     "LocalStorage"
   ],
-  "author": "Marc J. Schmidt",
+  "author": "Bilal Dabet (forked from Marc J. Schmidt)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/marcj/angular2-localstorage/issues"
+    "url": "https://github.com/bilaldabet/angular15-localstorage/issues"
   },
-  "homepage": "https://github.com/marcj/angular2-localstorage",
+  "homepage": "https://github.com/bilaldabet/angular15-localstorage",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "dist/**/*",
+    "index.js",
+    "index.d.ts",
+    "README.md"
+  ],
   "peerDependencies": {
     "@angular/core": "^15.0.0",
     "rxjs": "^7.5.0",

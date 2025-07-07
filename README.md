@@ -1,22 +1,69 @@
-# Angular @LocalStorage
+# Angular15 LocalStorage
 
 This Angular/TypeScript decorator makes it super easy to save and restore *automatically* a variable state in your
 component (class property) using HTML5' LocalStorage.
 
-**Updated for Angular 15** - This library now supports Angular 15 with modern TypeScript features.
+**Modern Angular 15+ Fork** - This is a modernized fork of the original `angular2-localstorage` package, updated to support Angular 15+ with modern TypeScript features and best practices.
 
-## Seeking new maintainer
+## Credits
 
-This project is not maintained. Please consider taking it over. More information at https://github.com/open-source-chest/take-it-over.
-If you are looking for an alternativ right now, look at https://github.com/zoomsphere/ngx-store/.
+This package is a modernized fork of the excellent [angular2-localstorage](https://github.com/marcj/angular2-localstorage) library by **Marc J. Schmidt**.
+
+### Original Author
+- **Marc J. Schmidt** - Original creator and maintainer of `angular2-localstorage`
+- Original repository: https://github.com/marcj/angular2-localstorage
+
+### What's Different in This Fork
+- ✅ **Angular 15+ Support**: Updated to work with modern Angular versions
+- ✅ **Modern TypeScript**: Uses latest TypeScript features and strict mode
+- ✅ **ESLint**: Replaced deprecated TSLint with modern ESLint
+- ✅ **providedIn: 'root'**: Uses modern Angular service registration
+- ✅ **Updated Dependencies**: All dependencies updated to latest versions
+- ✅ **Improved Type Safety**: Better TypeScript types and error handling
+
+All core functionality and API remain the same as the original library, ensuring easy migration.
+
+## 🔄 Migrating from `angular2-localstorage`
+
+If you're currently using the original `angular2-localstorage` package, migration is simple:
+
+1. **Uninstall the old package:**
+   ```bash
+   npm uninstall angular2-localstorage
+   ```
+
+2. **Install this package:**
+   ```bash
+   npm install angular15-localstorage
+   ```
+
+3. **Update your imports:**
+   ```typescript
+   // Before
+   import {LocalStorage, SessionStorage} from "angular2-localstorage";
+   
+   // After
+   import {LocalStorage, SessionStorage} from "angular15-localstorage";
+   ```
+
+4. **Remove explicit service providers** (if you were manually providing them):
+   ```typescript
+   // Before (remove this)
+   providers: [LocalStorageService, SessionStorageService]
+   
+   // After (services are now auto-provided)
+   // No need to manually provide services
+   ```
+
+**That's it!** All your existing `@LocalStorage()` and `@SessionStorage()` decorators will continue to work exactly as before.
 
 ## Use
 
-1. Download the library using npm or github: `npm install --save angular2-localstorage`
+1. Download the library using npm: `npm install --save angular15-localstorage`
 2. Import the WebStorageModule in your app module:
     ```typescript
     import {NgModule} from "@angular/core";
-    import {WebStorageModule, LocalStorageService} from "angular2-localstorage";
+    import {WebStorageModule, LocalStorageService} from "angular15-localstorage";
 
     @NgModule({
         imports: [WebStorageModule]
@@ -28,7 +75,7 @@ If you are looking for an alternativ right now, look at https://github.com/zooms
 
 3. Use the `LocalStorage` decorator
 ```typescript
-import {LocalStorage, SessionStorage} from "angular2-localstorage/WebStorage";
+import {LocalStorage, SessionStorage} from "angular15-localstorage";
 
 class MySuperComponent {
     @LocalStorage() public lastSearchQuery:Object = {};
@@ -98,3 +145,9 @@ class AdminMenuComponent {
     @SessionStorage() public profile:any = {};
 }
 ```
+
+## License
+
+ISC License - Same as the original `angular2-localstorage` package.
+
+This fork maintains the same license as the original work by Marc J. Schmidt.
